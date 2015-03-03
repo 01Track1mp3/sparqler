@@ -1,0 +1,31 @@
+{
+  "name": "sparqler",
+  "version": "1.0.0",
+  "description": "This lightweight library enables querying multiple sparql endpoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/01Track1mp3/sparqler"
+  },
+  "keywords": [
+    "sparql",
+    "lightweight",
+    "endpoint"
+  ],
+  "contributors": [
+    "Sven Mischkewitz <01Track1mp3>",
+    "Nico Ring <nicoring>",
+    "Stefan Wehrmeyer <stefanw>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/01Track1mp3/sparqler/issues"
+  },
+  "homepage": "https://github.com/01Track1mp3/sparqler",
+  "dependencies": {
+    "lodash": "^3.3.1"
+  }
+}
