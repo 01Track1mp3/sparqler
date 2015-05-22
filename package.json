@@ -16,9 +16,18 @@
     "endpoint"
   ],
   "contributors": [
-    "Sven Mischkewitz <01Track1mp3>",
-    "Nico Ring <nicoring>",
-    "Stefan Wehrmeyer <stefanw>"
+    {
+      "name": "Sven Mischkewitz",
+      "email": "01Track1mp3"
+    },
+    {
+      "name": "Nico Ring",
+      "email": "nicoring"
+    },
+    {
+      "name": "Stefan Wehrmeyer",
+      "email": "stefanw"
+    }
   ],
   "license": "ISC",
   "bugs": {
@@ -27,5 +36,12 @@
   "homepage": "https://github.com/01Track1mp3/sparqler",
   "dependencies": {
     "lodash": "^3.3.1"
-  }
+  },
+  "gitHead": "631b42013196b6b841886c2ab8c536091d1d4693",
+  "readme": "# Sparqler\nThis lightweight library enables querying multiple sparql endpoints.\n",
+  "readmeFilename": "README.md",
+  "_id": "sparqler@1.0.0",
+  "_shasum": "0f881cd4a5eebf34248afba27ec13340974d2ae6",
+  "_from": "../../../../../../../var/folders/m5/_c_nqyrx6gn_7jmx6sdy6h200000gn/T/npm-9782-006768a7/git-cache-c92e4861e10a/631b42013196b6b841886c2ab8c536091d1d4693",
+  "_resolved": "git://github.com/01Track1mp3/sparqler#631b42013196b6b841886c2ab8c536091d1d4693"
 }
