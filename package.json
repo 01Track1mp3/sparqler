@@ -35,7 +35,8 @@
   },
   "homepage": "https://github.com/01Track1mp3/sparqler",
   "dependencies": {
-    "lodash": "^3.3.1"
+    "lodash": "^3.3.1",
+    "request": "^2.55.0"
   },
   "gitHead": "631b42013196b6b841886c2ab8c536091d1d4693",
   "readme": "# Sparqler\nThis lightweight library enables querying multiple sparql endpoints.\n",
