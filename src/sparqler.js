@@ -117,7 +117,7 @@ class Sparqler {
     };
 
     callback = errorHandler(callback);
-    this.Request(opts, callback);
+    request(opts, callback);
   };
 
   /**

@@ -9,3 +9,7 @@ gulp.task('compile', function() {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('lib'));
 });
+
+gulp.task('watch', function() {
+  return gulp.watch('src/**/*.js', ['compile']);
+});
