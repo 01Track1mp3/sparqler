@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/01Track1mp3/sparqler"
+    "url": "https://github.com/mischkew/sparqler"
   },
   "keywords": [
     "sparql",
@@ -18,7 +18,7 @@
   "contributors": [
     {
       "name": "Sven Mischkewitz",
-      "email": "01Track1mp3"
+      "email": "sven.mkw@gmail.com"
     },
     {
       "name": "Nico Ring",
@@ -31,9 +31,9 @@
   ],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/01Track1mp3/sparqler/issues"
+    "url": "https://github.com/mischkew/sparqler/issues"
   },
-  "homepage": "https://github.com/01Track1mp3/sparqler",
+  "homepage": "https://github.com/mischkew/sparqler",
   "dependencies": {
     "lodash": "^3.3.1",
     "request": "^2.55.0"
@@ -44,5 +44,5 @@
   "_id": "sparqler@1.0.0",
   "_shasum": "0f881cd4a5eebf34248afba27ec13340974d2ae6",
   "_from": "../../../../../../../var/folders/m5/_c_nqyrx6gn_7jmx6sdy6h200000gn/T/npm-9782-006768a7/git-cache-c92e4861e10a/631b42013196b6b841886c2ab8c536091d1d4693",
-  "_resolved": "git://github.com/01Track1mp3/sparqler#631b42013196b6b841886c2ab8c536091d1d4693"
+  "_resolved": "git://github.com/mischkew/sparqler#631b42013196b6b841886c2ab8c536091d1d4693"
 }
