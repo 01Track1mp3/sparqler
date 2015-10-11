@@ -8,7 +8,8 @@ export default class Query {
 
     this.queryString = queryString
   }
-  // 
+
+  //
   // execute(endpointUrl, prefixes) {
   //   new QueryExecution(queryString).execute(endpointUrl, prefixes)
   // }
