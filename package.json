@@ -35,6 +35,7 @@
   },
   "scripts": {
     "test": "BABEL_JEST_STAGE=0 jest",
+    "watch:test": "nodemon -w __tests__ -w ./src -e js,jsx -x npm test",
     "lint": "eslint ./src"
   },
   "jest": {
