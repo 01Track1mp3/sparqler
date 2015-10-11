@@ -14,12 +14,12 @@ describe('Endpoint', () => {
     const endpoint = new Endpoint({
       url: 'myurl',
       graph: 'mygraph',
-      prefixes: [{ 'pre': 'fix' }]
+      prefixes: { 'pre': 'fix' }
     })
 
     expect(endpoint.configs.url).toEqual('myurl')
     expect(endpoint.configs.graph).toEqual('mygraph')
-    expect(endpoint.configs.prefixes).toEqual([{ 'pre': 'fix' }])
+    expect(endpoint.configs.prefixes).toEqual({ 'pre': 'fix' })
   })
 
   it('sets url', () => {
@@ -35,17 +35,23 @@ describe('Endpoint', () => {
   })
 
   it('sets prefixes', () => {
-    const i = instance.setPrefixes([{ 'pre': 'fix' }])
+    const i = instance.setPrefixes({ 'pre': 'fix' })
 
-    expect(i.configs.prefixes).toEqual([{ 'pre': 'fix' }])
+    expect(i.configs.prefixes).toEqual({ 'pre': 'fix' })
   })
 
   it('adds prefixes', () => {
     const i = instance
-      .addPrefixes([{ 'pre': 'fix' }])
-      .addPrefixes([{ 'foo': 'bar' }])
+      .addPrefixes({ 'pre': 'fix' })
+      .addPrefixes({ 'foo': 'bar' })
 
-    expect(i.configs.prefixes).toEqual([{ 'pre': 'fix' }, { 'foo': 'bar' }])
+    expect(i.configs.prefixes).toEqual({ 'pre': 'fix', 'foo': 'bar' })
+  })
+
+  it('adds a prefix', () => {
+    const i = instance.addPrefix('pre', 'fix')
+
+    expect(i.configs.prefixes.pre).toBe('fix')
   })
 
   it('throws when invalid url', () => {
@@ -58,7 +64,7 @@ describe('Endpoint', () => {
   })
 
   it('throws when invalid prefixes', () => {
-    expect(() => { new Endpoint({ url: 'myurl', prefixes: null }) }).toThrow(new Error('Endpoint requires prefixes to be an array.'))
+    expect(() => { new Endpoint({ url: 'myurl', prefixes: null }) }).toThrow(new Error('Endpoint requires prefixes to be an object.'))
   })
 
   it('throws when query does not support execute method', () => {
