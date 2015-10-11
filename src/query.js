@@ -9,7 +9,7 @@ class SparqlerQuery {
 
   constructor(sparqler, query) {
     this.sparqler = sparqler;
-    this.rawQuery = query || "";
+    this.rawQuery = query || '';
     this.parameters = {};
   }
 
@@ -26,8 +26,8 @@ class SparqlerQuery {
   }
 
   execute(callback) {
-    if (typeof callback !== "function") {
-      throw new Error("Provide a callback function!");
+    if (typeof callback !== 'function') {
+      throw new Error('Provide a callback function!');
     }
 
     var query = this.parseParameters(this.rawQuery, this.parameters);
@@ -38,7 +38,7 @@ class SparqlerQuery {
 
   parseParameters(query, parameters) {
     _.forEach(parameters, function(value, key) {
-      var pattern = new RegExp("\\$" + key, "g");
+      var pattern = new RegExp('\\$' + key, 'g');
       query = query.replace(pattern, value);
     });
 
