@@ -9,18 +9,20 @@ export default class Query {
     this.queryString = queryString
   }
 
-
   execute(endpointUrl, prefixes = {}, options) {
-    this.addPrefixes(prefixes)
-    return new QueryExecution(queryString).execute(endpointUrl, options)
+    const queryWithPrefixes = this.addPrefixes(prefixes)
+    return new QueryExecution(queryWithPrefixes.queryString).execute(endpointUrl, options)
   }
 
-  addPrefix() {
-
+  addPrefix(prefix, uri) {
+    return this.addPrefixes({[prefix]: uri})
   }
 
-  addPrefixes() {
-
+  addPrefixes(prefixes) {
+    const prefixString = _.reduce(prefixes, (acc, uri, prefix) => {
+      return acc + `PREFIX ${prefix}: <${uri}>.\n`
+    }, '')
+    return new Query(prefixString + this.queryString)
   }
 
   replaceParameter(name, value, queryString) {

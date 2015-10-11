@@ -278,6 +278,44 @@ describe('Query', () => {
   })
 
 
+  it('should add a prefix', () => {
+    const QUERY_STRING =
+      `
+        SELECT * WHERE {
+          ?s ?p ?o
+        }
+      `
+    const EXPECTED ='PREFIX dbo: <http://dbpedia.org/ontology>.'
+
+    const query = new Query(QUERY_STRING)
+      .addPrefix('dbo', 'http://dbpedia.org/ontology')
+
+    expect(query.queryString.split('\n')[0]).toEqual(EXPECTED)
+  })
+
+
+  it('should add multiple prefixes', () => {
+    const QUERY_STRING =
+      `
+        SELECT * WHERE {
+          ?s ?p ?o
+        }
+      `
+    const EXPECTED_FIRST = 'PREFIX dbo: <http://dbpedia.org/ontology>.'
+    const EXPECTED_SECOND = 'PREFIX dbr: <http://dbpedia.org/resource>.'
+
+    const query = new Query(QUERY_STRING)
+      .addPrefixes({
+        dbo: 'http://dbpedia.org/ontology',
+        dbr: 'http://dbpedia.org/resource'
+      })
+
+      expect(query.queryString.split('\n')[0]).toEqual(EXPECTED_FIRST)
+      expect(query.queryString.split('\n')[1]).toEqual(EXPECTED_SECOND)
+  })
+
+
+
   describe('immutability', () => {
     it('setParameter should return a new Query object', () => {
       const query = new Query('')
