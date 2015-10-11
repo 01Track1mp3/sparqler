@@ -9,10 +9,19 @@ export default class Query {
     this.queryString = queryString
   }
 
-  //
-  // execute(endpointUrl, prefixes) {
-  //   new QueryExecution(queryString).execute(endpointUrl, prefixes)
-  // }
+
+  execute(endpointUrl, prefixes = {}, options) {
+    this.addPrefixes(prefixes)
+    return new QueryExecution(queryString).execute(endpointUrl, options)
+  }
+
+  addPrefix() {
+
+  }
+
+  addPrefixes() {
+
+  }
 
   replaceParameter(name, value, queryString) {
     const pattern = new RegExp('\\?' + name, 'g');

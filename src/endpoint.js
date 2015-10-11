@@ -57,6 +57,6 @@ export default class Endpoint {
     }
 
     const { url, graph, prefixes } = this.configs
-    return query.execute(url, graph, prefixes)
+    return query.execute(url, prefixes, { graph })
   }
 }
