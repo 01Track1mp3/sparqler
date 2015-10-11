@@ -74,6 +74,6 @@ describe('Endpoint', () => {
       .setPrefixes([{ 'foo': 'bar' }])
       .execute(query)
 
-    expect(query.execute.mock.calls[0]).toEqual(['myurl', 'mygraph', [{ 'foo':'bar' }]])
+    expect(query.execute.mock.calls[0]).toEqual(['myurl', [{ 'foo':'bar' }], {graph: 'mygraph'}])
   })
 })
