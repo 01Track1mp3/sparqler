@@ -48,6 +48,9 @@
       "js",
       "json",
       "es6"
+    ],
+    "testPathDirs": [
+      "src/"
     ]
   },
   "gitHead": "631b42013196b6b841886c2ab8c536091d1d4693",
