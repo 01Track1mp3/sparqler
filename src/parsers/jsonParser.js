@@ -1,5 +1,6 @@
 import _ from 'lodash'
 
+
 export const defaultTypeTransforms = {
   'http://www.w3.org/2001/XMLSchema#integer': parseInt,
   'http://www.w3.org/2001/XMLSchema#decimal': parseFloat,
@@ -9,9 +10,10 @@ export const defaultTypeTransforms = {
   'http://www.w3.org/2001/XMLSchema#time': (_string) => _string
 }
 
+
 export class JSONSelectParser {
   constructor(data) {
-    this.data = JSON.parse(data)
+    this.data = data
   }
 
   parse() {
@@ -65,7 +67,7 @@ export class JSONSelectParser {
 
 export class JSONAskParser {
   constructor(data) {
-    this.data = JSON.parse(data)
+    this.data = data
   }
 
   parse() {
@@ -73,5 +75,23 @@ export class JSONAskParser {
       furtherInfo: this.data.head.link,
       results: this.data.boolean
     }
+  }
+}
+
+
+export class JSONParser {
+  constructor(jsonString) {
+    this.data = JSON.parse(jsonString)
+    this._responseParser = JSONParser.isAskResponse(this.data)
+      ? new JSONAskParser(this.data)
+      : new JSONSelectParser(this.data)
+  }
+
+  static isAskResponse(data) {
+    return _.has(data, 'boolean')
+  }
+
+  parse() {
+    this._responseParser.parse()
   }
 }

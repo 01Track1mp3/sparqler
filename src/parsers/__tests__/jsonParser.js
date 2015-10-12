@@ -14,14 +14,8 @@ describe('JSONAskParser', () => {
 
   let parsedData = null
   beforeEach(() => {
-    const parser = new JSONAskParser(JSON.stringify(ASK_RESPONSE))
+    const parser = new JSONAskParser(ASK_RESPONSE)
     parsedData = parser.parse()
-  })
-
-  it('should parse json string', () => {
-    const objectData = (new JSONAskParser('{"foo": "bar"}')).data
-
-    expect(objectData).toEqual({ foo: 'bar' })
   })
 
   it('should return ask further info', () => {
@@ -114,13 +108,7 @@ describe('JSONSelectParser', () => {
   let parser = null
   let parsedData = null
   beforeEach(() => {
-    parser = new JSONSelectParser(JSON.stringify(SELECT_RESPONSE))
-  })
-
-  it('should parse json string', () => {
-    const objectData = (new JSONSelectParser('{"foo": "bar"}')).data
-
-    expect(objectData).toEqual({ foo: 'bar' })
+    parser = new JSONSelectParser(SELECT_RESPONSE)
   })
 
   it('should return select vars', () => {
@@ -195,5 +183,49 @@ describe('JSONSelectParser', () => {
       }
     ])
   })
+})
 
+describe('JSONParser', () => {
+  const { JSONParser, JSONAskParser, JSONSelectParser } = require('../jsonParser')
+
+  it('should parse json string', () => {
+    const objectData = (new JSONParser('{"foo": "bar"}')).data
+
+    expect(objectData).toEqual({ foo: 'bar' })
+  })
+
+  it('should detect an ask response', () => {
+    console.log(JSONParser.isAskResponse(ASK_RESPONSE))
+    expect(JSONParser.isAskResponse(ASK_RESPONSE)).toBe(true)
+  })
+
+  it('should detect a select response', () => {
+    expect(JSONParser.isAskResponse(SELECT_RESPONSE)).toBe(false)
+  })
+
+  it('should use ask parser when ask response', () => {
+    const parser = new JSONParser(JSON.stringify(ASK_RESPONSE))
+
+    expect(parser._responseParser instanceof JSONAskParser).toBe(true)
+  })
+
+  it('should use select parser when select response', () => {
+    const parser = new JSONParser(JSON.stringify(SELECT_RESPONSE))
+
+    expect(parser._responseParser instanceof JSONSelectParser).toBe(true)
+  })
+
+  it('should pass data correctly to response parser', () => {
+    const parser = new JSONParser(JSON.stringify(ASK_RESPONSE))
+
+    expect(parser.data).toBe(parser._responseParser.data)
+  })
+
+  it('should parse via response parser', () => {
+    const parser = new JSONParser(JSON.stringify(ASK_RESPONSE))
+    parser._responseParser = { parse: jest.genMockFunction() }
+    parser.parse()
+
+    expect(parser._responseParser.parse.mock.calls.length).toBe(1)
+  })
 })
