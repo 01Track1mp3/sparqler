@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import QueryExecution from './QueryExecution'
 
 export default class Query {
   constructor(queryString) {

@@ -54,10 +54,10 @@
       "src/"
     ],
     "unmockedModulePathPatterns": [
-      "lodash"
+      "lodash",
+      "node-fetch"
     ]
   },
-  "gitHead": "631b42013196b6b841886c2ab8c536091d1d4693",
   "readme": "# Sparqler\nThis lightweight library enables querying multiple sparql endpoints.\n",
   "readmeFilename": "README.md",
   "dependencies": {

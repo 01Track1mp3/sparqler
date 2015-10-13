@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import Query from './query'
+import Query from './Query'
 
 
 export default class Endpoint {
