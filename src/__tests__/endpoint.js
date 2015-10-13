@@ -1,9 +1,9 @@
-jest.dontMock('../endpoint.js')
+jest.dontMock('../Endpoint.js')
 jest.dontMock('lodash')
 
 
 describe('Endpoint', () => {
-  const Endpoint = require('../endpoint')
+  const Endpoint = require('../Endpoint')
 
   let instance = null
   beforeEach(() => {
@@ -66,7 +66,7 @@ describe('Endpoint', () => {
   })
 
   it('executes a query', () => {
-    const Query = require('../query')
+    const Query = require('../Query')
     const query = new Query()
 
     instance

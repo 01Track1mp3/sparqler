@@ -1,7 +1,7 @@
-jest.dontMock('../query.js')
+jest.dontMock('../Query.js')
 
 describe('Query', () => {
-  const Query = require('../query')
+  const Query = require('../Query')
 
   it('should throw an exception if no string is passed to the constructor', () => {
     expect(() => { new Query() }).toThrow(new Error('No valid queryString passed to Query constructor'))
