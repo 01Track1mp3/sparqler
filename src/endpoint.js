@@ -52,12 +52,21 @@ export default class Endpoint {
 
   //== RUN QUERIES
 
+  createQuery(aString) {
+    return new Query(aString)
+  }
+
   execute(query) {
-    if (!query || !_.isFunction(query.execute)) {
-      throw new Error('Endpoint requires a query which supports an execute-method.')
+    let _query = query
+    if (_.isString(query)) {
+      _query = this.createQuery(query)
+    }
+
+    if (!_query || !_.isFunction(_query.execute)) {
+      throw new Error('Endpoint requires a query which supports an execute-method or a query string.')
     }
 
     const { url, graph, prefixes } = this.configs
-    return query.execute(url, prefixes, { graph })
+    return _query.execute(url, prefixes, { graph })
   }
 }

@@ -68,18 +68,50 @@ describe('Endpoint', () => {
   })
 
   it('throws when query does not support execute method', () => {
-    expect(() => { instance.execute(null) }).toThrow(new Error('Endpoint requires a query which supports an execute-method.'))
+    expect(() => { instance.execute(null) }).toThrow(new Error('Endpoint requires a query which supports an execute-method or a query string.'))
   })
 
-  it('executes a query', () => {
-    const Query = require('../Query')
-    const query = new Query()
+  describe('execute', () => {
+    it('executes a query', () => {
+      const Query = require('../Query')
+      const queryString = 'select * where { ?s ?p ?o}'
+      const query = new Query(queryString)
 
-    instance
-      .setGraph('mygraph')
-      .setPrefixes([{ 'foo': 'bar' }])
-      .execute(query)
+      instance
+        .setGraph('mygraph')
+        .setPrefixes([{ 'foo': 'bar' }])
+        .execute(query)
 
-    expect(query.execute.mock.calls[0]).toEqual(['myurl', [{ 'foo':'bar' }], {graph: 'mygraph'}])
+      expect(query.execute).toBeCalledWith('myurl', [{ 'foo':'bar' }], {graph: 'mygraph'})
+    })
+
+    it ('call createQuery with passed queryString', () => {
+      const queryString = 'select * where { ?s ?p ?o}'
+      const Query = require('../Query')
+
+      Endpoint.prototype.createQuery = jest.genMockFunction().mockImplementation(() => new Query(''))
+      instance.execute(queryString)
+      expect(Endpoint.prototype.createQuery).toBeCalledWith(queryString)
+    })
+
+    it('executes a query string', () => {
+      const queryString = 'select * where { ?s ?p ?o}'
+      const Query = require('../Query')
+
+      let query
+      Endpoint.prototype.createQuery = jest.genMockFunction().mockImplementation((aString) => {
+        query = new Query(aString)
+        return query
+      })
+
+      instance
+        .setGraph('mygraph')
+        .setPrefixes([{ 'foo': 'bar' }])
+        .execute(queryString)
+
+      expect(query.execute).toBeCalledWith('myurl', [{ 'foo':'bar' }], {graph: 'mygraph'})
+    })
+
   })
+
 })
