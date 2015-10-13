@@ -53,10 +53,10 @@ const SELECT_RESPONSE = {
         }
       },
       {
-        x: { "type": "bnode", "value": "r2" },
-        hpage: { "type": "uri", "value": "http://work.example.org/bob/" },
-        name: { "type": "literal", "value": "Bob", "xml:lang": "en" },
-        mbox: { "type": "uri", "value": "mailto:bob@work.example.org" }
+        x: { 'type': 'bnode', 'value': 'r2' },
+        hpage: { 'type': 'uri', 'value': 'http://work.example.org/bob/' },
+        name: { 'type': 'literal', 'value': 'Bob', 'xml:lang': 'en' },
+        mbox: { 'type': 'uri', 'value': 'mailto:bob@work.example.org' }
       }
     ]
   }

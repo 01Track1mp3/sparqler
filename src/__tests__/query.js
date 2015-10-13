@@ -271,10 +271,10 @@ describe('Query', () => {
 
 
   it('should throw an exception for unsupported literal types', () => {
-    expect(() => {new Query('').setLiteral('foo', {})}).toThrow(new Error("Unsupported literal type"))
-    expect(() => {new Query('').setLiteral('foo', () => {})}).toThrow(new Error("Unsupported literal type"))
-    expect(() => {new Query('').setLiteral('foo', null)}).toThrow(new Error("Unsupported literal type"))
-    expect(() => {new Query('').setLiteral('foo', undefined)}).toThrow(new Error("Unsupported literal type"))
+    expect(() => {new Query('').setLiteral('foo', {})}).toThrow(new Error('Unsupported literal type'))
+    expect(() => {new Query('').setLiteral('foo', () => {})}).toThrow(new Error('Unsupported literal type'))
+    expect(() => {new Query('').setLiteral('foo', null)}).toThrow(new Error('Unsupported literal type'))
+    expect(() => {new Query('').setLiteral('foo', undefined)}).toThrow(new Error('Unsupported literal type'))
   })
 
 

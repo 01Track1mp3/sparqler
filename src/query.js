@@ -4,7 +4,7 @@ import QueryExecution from './QueryExecution'
 export default class Query {
   constructor(queryString) {
     if (typeof queryString != 'string') {
-      throw new Error("No valid queryString passed to Query constructor")
+      throw new Error('No valid queryString passed to Query constructor')
     }
 
     this.queryString = queryString
@@ -74,7 +74,7 @@ export default class Query {
           return value
           break;
         default:
-          throw new Error("Unsupported literal type")
+          throw new Error('Unsupported literal type')
           break;
       }
     })
