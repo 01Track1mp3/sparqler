@@ -1,0 +1,20 @@
+{
+  "testDirectoryName": "__acceptance_tests__",
+  "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+  "testFileExtensions": [
+    "es6",
+    "js"
+  ],
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "es6"
+  ],
+  "testPathIgnorePatterns": [
+    "setupTestFramework.js"
+  ],
+  "setupTestFrameworkScriptFile": "__acceptance_tests__/setupTestFramework.js",
+  "testPathDirs": [
+    "<rootDir>/__acceptance_tests__"
+  ]
+}
