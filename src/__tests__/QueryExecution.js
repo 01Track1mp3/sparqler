@@ -18,7 +18,19 @@ describe('QueryExecution', () => {
     expect(qe.query).toEqual(DEFAULT_QUERY_STRING)
   })
 
-  describe('fetching', () => {
+  describe('execute', () => {
+    xit('should return a promise with a ResultSet', () => {
+      const qe = new QueryExecution(DEFAULT_QUERY_STRING)
+      // todo
+
+      qe.execute(DEFAULT_ENDPOINT).then(result => {
+        expect(result).toBe(new ResultSet())
+      })
+
+    })
+  })
+
+  describe('privateExecute', () => {
 
     it('should include the query as a queryparam', () => {
       const qe = new QueryExecution(DEFAULT_QUERY_STRING)

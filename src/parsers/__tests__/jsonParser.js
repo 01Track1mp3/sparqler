@@ -193,7 +193,6 @@ describe('JSONParser', () => {
   })
 
   it('should detect an ask response', () => {
-    console.log(JSONParser.isAskResponse(ASK_RESPONSE))
     expect(JSONParser.isAskResponse(ASK_RESPONSE)).toBe(true)
   })
 
