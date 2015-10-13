@@ -4,7 +4,7 @@ import Query from './Query'
 
 export default class Endpoint {
   constructor(configs = {}) {
-    const { url = '', prefixes = [], graph = '' } = configs
+    const { url = '', prefixes = {}, graph = '' } = configs
 
     if (!_.isString(url)) {
       throw new Error('Endpoint requires url to be a string.')
@@ -18,8 +18,8 @@ export default class Endpoint {
       throw new Error('Endpoint requires graph to be a string.')
     }
 
-    if (!_.isArray(prefixes)) {
-      throw new Error('Endpoint requires prefixes to be an array.')
+    if (!_.isObject(prefixes)) {
+      throw new Error('Endpoint requires prefixes to be an object.')
     }
 
     this.configs = { url, prefixes, graph }
@@ -41,11 +41,12 @@ export default class Endpoint {
   }
 
   addPrefixes(prefixes) {
-    return this.setPrefixes(this.configs.prefixes.concat(prefixes))
+    const _prefixes = { ...this.configs.prefixes, ...prefixes }
+    return this.setPrefixes(_prefixes)
   }
 
-  addPrefix(prefix) {
-    return this.addPrefixes([ prefix ])
+  addPrefix(prefix, uri) {
+    return this.addPrefixes({ [prefix]: uri })
   }
 
 
