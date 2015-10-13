@@ -2,6 +2,8 @@ import _ from 'lodash';
 import querystring from 'querystring'
 import fetch from 'isomorphic-fetch'
 
+import ResultSet from './ResultSet'
+
 export default class QueryExecution {
 
   defaultParams = {
@@ -23,7 +25,7 @@ export default class QueryExecution {
   execute(endpointUrl, params) {
     return this.privateExecute(endpointUrl, params)
       .then(response => response.json())
-      // .then(json => new ResultSet(json))
+      .then(json => new ResultSet(json))
   }
 
   privateExecute(endpointUrl, params = {}) {
