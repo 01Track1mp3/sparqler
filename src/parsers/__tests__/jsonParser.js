@@ -1,6 +1,4 @@
 jest.dontMock('../jsonParser')
-jest.dontMock('lodash')
-
 
 const ASK_RESPONSE = {
   head: {
